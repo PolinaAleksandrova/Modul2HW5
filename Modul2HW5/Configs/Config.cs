@@ -9,6 +9,6 @@ namespace Modul2HW5.Configs
 {
     public class Config
     {
-        public LoggerConfig Logger { get; set; }
+        public LoggerConfig LoggerConfig { get; set; }
     }
 }

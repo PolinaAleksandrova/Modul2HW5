@@ -8,6 +8,7 @@ using Modul2HW5.Services.Abstractions;
 using Modul2HW5.Services;
 using Modul2HW5.Enums;
 using Modul2HW5.Models;
+using Modul2HW5.Configs;
 
 namespace Modul2HW5
 {
@@ -15,16 +16,23 @@ namespace Modul2HW5
     {
         private ILogger _logger;
         private IActions _actions;
-        public Application(ILogger logger, IActions actions)
+        private IConfigService _configService;
+        private IFileService _fileService;
+        public Application(ILogger logger, IActions action, IConfigService configService, IFileService fileService)
         {
             _logger = logger;
-            _actions = actions;
+            _actions = action;
+            _configService = configService;
+            _fileService = fileService;
         }
 
         public void Run()
         {
             Random random = new Random();
             var randomMethod = 0;
+            _configService.ReadConfig();
+            _fileService.CreateDirectory(_configService.Config.LoggerConfig.DirectoryPath);
+
             for (var i = 0; i < 100; i++)
             {
                 randomMethod = random.Next(1, 4);
@@ -52,6 +60,8 @@ namespace Modul2HW5
                     _logger.WriteMessage($"{DateTime.UtcNow}: {LogType.Error}: Action failed by a reason: {exception.Message} ");
                 }
             }
+
+            _logger.WriteLog();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Modul2HW5
 
         public bool GetInfo()
         {
-            _logger.WriteMessage($"{DateTime.Now}:{LogType.Info}: Start method: GetInfo");
+            _logger.WriteMessage($"{DateTime.Now}:{LogType.Info} : Start method: GetInfo");
             return true;
         }
 

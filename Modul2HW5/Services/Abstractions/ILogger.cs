@@ -9,5 +9,6 @@ namespace Modul2HW5.Services.Abstractions
     public interface ILogger
     {
         public void WriteMessage(string message);
+        public void WriteLog();
     }
 }

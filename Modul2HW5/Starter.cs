@@ -17,6 +17,7 @@ namespace Modul2HW5
             .AddTransient<IActions, Actions>()
             .AddTransient<IFileService, FileService>()
             .AddSingleton<ILogger, Logger>()
+            .AddSingleton<IConfigService, ConfigService>()
             .AddTransient<Application>()
             .BuildServiceProvider();
             var appStarter = serviceProvider.GetService<Application>();

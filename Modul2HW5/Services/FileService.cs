@@ -23,5 +23,17 @@ namespace Modul2HW5.Services
         {
             File.WriteAllText(path, text);
         }
+
+        public void CountDirectoryFiles(string path)
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(path);
+            FileInfo fileInfo = new FileInfo(path);
+            foreach (FileInfo file in directoryInfo.GetFiles())
+            {
+                if (file.Length > 3)
+                {
+                }
+            }
+        }
     }
 }
